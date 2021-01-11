@@ -12,6 +12,17 @@ public class Ch3_63 {
                 .delay(3, TimeUnit.SECONDS)
                 .subscribe(s -> System.out.println(LocalDateTime.now().format(f) + " Received: " + s));
         sleep(5000);
+        System.out.println("---------------------");
+        Observable.just("Alpha", "Beta", "Gamma")
+                .flatMap(t -> Observable.just(t).delay(1, TimeUnit.SECONDS))
+                .subscribe(s -> System.out.println(LocalDateTime.now().format(f) + " Received: " + s));
+        sleep(5000);
+        System.out.println("---------------------");
+        Observable.zip(Observable.just("Alpha", "Beta", "Gamma"), Observable.interval(1, TimeUnit.SECONDS), (a, b) -> a)
+                .subscribe(s -> System.out.println(LocalDateTime.now().format(f) + " Received: " + s));
+
+        sleep(5000);
+
     }
 
     private static void sleep(long millis) {

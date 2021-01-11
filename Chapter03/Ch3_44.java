@@ -11,6 +11,6 @@ public class Ch3_44 {
                     }
                 })
                 .subscribe(i -> System.out.println("RECEIVED: " + i),
-                        e -> System.out.println("RECEIVED ERROR: " + e));
+                        e -> System.out.println("RECEIVED ERROR: " + e),()-> System.out.println("complete"));
     }
 }
